@@ -23,6 +23,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="my-icons.html">
 
 <link rel="lazy-import" href="my-view0.html">
+<link rel="lazy-import" href="my-view9.html"> <!-- login -->
+<link rel="lazy-import" href="my-success.html">
 <link rel="lazy-import" href="my-view1.html">
 <link rel="lazy-import" href="my-view2.html">
 <link rel="lazy-import" href="my-view3.html">
@@ -92,6 +94,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="view9" href="[[rootPath]]view9">Login</a>
           <a name="view8" href="[[rootPath]]view8">Profile</a>
           <a name="view1" href="[[rootPath]]view1">Register</a>
           <a name="view2" href="[[rootPath]]view2">Locations</a>
@@ -115,6 +118,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
           <my-view0 name="view0" username={{user.name}} phone={{user.phone}}></my-view0>
+          <my-view9 name="view9" username={{user.name}}></my-view9>
           <my-view1 name="view1"></my-view1>
           <my-view2 name="view2"></my-view2>
           <my-view3 name="view3"></my-view3>
@@ -123,6 +127,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <my-view6 name="view6"></my-view6>
           <my-view7 name="view7"></my-view7>
           <my-view8 name="view8" username={{user.name}} phone="{{user.phone}}"></my-view8>
+          <my-success name="success"></my-success>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
       </app-header-layout>
