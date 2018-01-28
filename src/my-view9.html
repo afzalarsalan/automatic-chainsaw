@@ -1,0 +1,72 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view9">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      a {
+          text-decoration: none;
+          color: inherit;
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">9</div>
+      <h1>Login</h1>
+      <iron-form id="form1">
+        <form action="http://127.0.0.1:5000/view9" method="post">
+          <paper-input always-float-label label="Phone:" name="phone"></paper-input>
+          <paper-input always-float-label label="Password:" name="password"></paper-input>
+          <paper-button on-click="submitForm">Submit</paper-button>
+        </form>
+      </iron-form>
+      <link rel="import" href="paper-search-input.html">
+      <profile-icon size="96px" username="Neo Anderson" link="https://plus.google.com/u/0/me?tab=xM&amp;authuser=0"></profile-icon>
+    </div>
+  </template>
+
+  <script>
+    class MyView9 extends Polymer.Element {
+      static get is() { return 'my-view9'; }
+
+      static get properties() {
+        return {
+          username: {
+            type: String,
+            notify: true
+          },
+          phone: {
+            type: Number,
+            notify: true
+          }
+        }
+      }
+
+      submitForm() {
+        this.$.form1.submit();
+      }
+    }
+    window.customElements.define(MyView9.is, MyView9);
+  </script>
+</dom-module>
