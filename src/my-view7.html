@@ -1,0 +1,120 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="shared-styles.html">
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-	scalable=no">
+    <title>DevLabs - Search and Geocode</title>
+    <style>
+      html, body, #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+   <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.6/"></script>
+    <script>
+        require([
+        "esri/WebMap",
+        "esri/views/MapView",
+	    "esri/widgets/Search",
+	    "esri/layers/FeatureLayer",
+        "dojo/domReady!"
+        ], function(WebMap, MapView,Search,FeatureLayer) {
+
+        var map = new WebMap({
+          portalItem: {
+        	id: "c2edb61c5a2941fb89b8219d40dd16c2" // This was created in 			the "Style a web map" and "Configure pop-ups" design 			labs
+      	}
+        });
+	var parksLayer = new FeatureLayer({
+	  url : "https://maps.cstx.gov/cstx/rest/services/OpenData_Parks/						FeatureServer/1",
+	});
+	
+	var sportsFieldLayer = new FeatureLayer({
+	  url : "http://services1.arcgis.com/qr14biwnHA6Vis6l/arcgis/rest/			services/Sports_Fields_2/FeatureServer/0",
+	});
+       
+	var view = new MapView({
+          container: "viewDiv",
+          map: map,
+	  center: [-99.6,31.23],
+	  zoom: 7
+        });
+	
+	// Search
+  	var search = new Search({
+    	  view: view
+  	});
+  	//search.defaultSource.withinViewEnabled = true; // Limit search to 							visible map area only
+  	view.ui.add(search, "top-right"); // Add to the map	
+	
+	search.locationEnabled = true;
+	
+	// Add the Parks as a search source
+	search.sources.push({
+	   featureLayer: parksLayer,
+	   searchFields: ["PARK_NAME"],
+	   displayField: "PARK_NAME",
+	   exactMatch: false,
+	   outFields: ["PARK_NAME"],
+	   resultGraphicEnabled : true,
+	   name: "Park Names",
+	   placeholder: "Santa",
+	});
+	
+	search.sources.push({
+	   featureLayer : sportsFieldLayer,
+	   searchFields: ["Name"],
+	   displayFields: "Name",
+	   exactMatch: false,
+	   outFields: ["Name"],
+	   resultGraphicEnabled: true,
+	   name: "Sports Fields",
+	   placeholder: "Santa",
+	});
+	function showPopup(address, pt) {
+    	   view.popup.open({
+      		title: "Find Address Result",
+      		content: address + "<br><br> Lat: " + Math.round(pt.latitude 		*100000)/100000 + " Lon: " + Math.round(pt.longitude * 			100000)/100000,location: pt
+    	});
+  	}
+  	view.on("click", function(evt){
+    	  search.clear(); 
+      	  view.popup.clear();
+    	  var locatorSource = search.defaultSource;
+    	  locatorSource.locator.locationToAddress(evt.mapPoint)
+      	    .then(function(response) {
+       	      var address = response.address;
+              // Show the address found
+       	      showPopup(address, evt.mapPoint);
+      	    }, function(err) {
+        	// Show no address found
+        	showPopup("No address found for this location.",evt.mapPoint);
+      	    });
+	});
+}); 
+</script>
+</head>
+<body>
+    <div id="viewDiv"></div>
+</body>
+</html>
+
+<dom-module id="my-view7">
+    <script>
+        class MyView7 extends Polymer.Element {
+        static get is() { return 'my-view7'; }
+        }
+
+        window.customElements.define(MyView7.is, MyView7);
+    </script>
+</dom-module>

@@ -14,6 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view0">
@@ -33,14 +34,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <div class="circle">0</div>
       <h1>Login</h1>
-      <paper-input always-float-label label="Name:"></paper-input>
-      <paper-input always-float-label label="Phone Number:"></paper-input>
+      <iron-form id="form1">
+        <form action="http://127.0.0.1:5000/" method="post">
+          <paper-input always-float-label label="Name:" name="name"></paper-input>
+          <paper-input always-float-label label="Phone Number:" name="number"></paper-input>
+          <!--<paper-button class="Yes"><a name="view1" href="/view1">Login</a></paper-button>-->
+          <paper-button on-click="submitForm">I'm trash</paper-button>
+        </form>
+      </iron-form>
     </div>
   </template>
 
   <script>
     class MyView0 extends Polymer.Element {
       static get is() { return 'my-view0'; }
+
+      submitForm() {
+        this.$.form1.submit();
+      }
     }
 
     window.customElements.define(MyView0.is, MyView0);
