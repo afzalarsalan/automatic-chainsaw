@@ -9,10 +9,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="FinishedPlaying">
+<dom-module id="my-view0">
   <template>
     <style include="shared-styles">
       :host {
@@ -20,21 +24,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+      a {
+          text-decoration: none;
+          color: inherit;
+      }
     </style>
 
     <div class="card">
-      <div class="circle">3</div>
-      <h1>Results</h1>
-      <paper-button class="Win">Win?</paper-button>
-      <paper-button class="Lose">Lose?</paper-button>
+      <div class="circle">0</div>
+      <h1>Login</h1>
+      <paper-input always-float-label label="Name:"></paper-input>
+      <paper-input always-float-label label="Phone Number:"></paper-input>
     </div>
   </template>
 
   <script>
-    class MyView3 extends Polymer.Element {
-      static get is() { return 'my-view3'; }
+    class MyView0 extends Polymer.Element {
+      static get is() { return 'my-view0'; }
     }
 
-    window.customElements.define(MyView3.is, MyView3);
+    window.customElements.define(MyView0.is, MyView0);
   </script>
 </dom-module>
