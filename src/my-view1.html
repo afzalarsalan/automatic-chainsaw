@@ -26,26 +26,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
 
-      #1 {
-        display: flex;
-        flex-direction: row;
+      .info-block {
+        margin-top: 24px;
+      }
+
+      paper-input {
+        max-width: 40%;
+      }
+
+      @media (max-width: 600px) {
+        paper-input {
+          max-width: 100%;
+        }
       }
     </style>
 
     <div class="card">
       <div class="circle">1</div>
       <h1>Register for 5 vs. 5</h1>
-      <div id="1"> <paper-input always-float-label label="Team Member #1"></paper-input>
-      <paper-input always-float-label label="Phone Number 1"></paper-input></div>
-      <div><paper-input always-float-label label="Team Member #2"></paper-input>
-      <paper-input always-float-label label="Phone Number 2"></paper-input></div>
-      <paper-input always-float-label label="Team Member #3"></paper-input>
-      <paper-input always-float-label label="Phone Number 3"></paper-input>
-      <paper-input always-float-label label="Team Member #4"></paper-input>
-      <paper-input always-float-label label="Phone Number 4"></paper-input>
-      <paper-input always-float-label label="Team Member #5"></paper-input>
-      <paper-input always-float-label label="Phone Number 5"></paper-input>
-      </paper-input>
+      <div class="info-block">
+        <paper-input label="Team Member #1"></paper-input>
+        <paper-input label="Phone Number 1"></paper-input>
+      </div>
+      <div class="info-block">
+        <paper-input label="Team Member #2"></paper-input>
+        <paper-input label="Phone Number 2"></paper-input>
+      </div>
+      <div class="info-block">
+        <paper-input label="Team Member #3"></paper-input>
+        <paper-input label="Phone Number 3"></paper-input>
+      </div>
+      <div class="info-block">
+        <paper-input label="Team Member #4"></paper-input>
+        <paper-input label="Phone Number 4"></paper-input>
+      </div>
+      <div class="info-block">
+        <paper-input label="Team Member #5"></paper-input>
+        <paper-input label="Phone Number 5"></paper-input>
+      </div>
       <div>
         <paper-button class="SelectLocation">Select Location</paper-button>
         <paper-button class="Register">Register</paper-button>
