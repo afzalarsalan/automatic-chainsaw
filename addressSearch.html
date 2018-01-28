@@ -1,13 +1,3 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/neon-animation/web-animations.html">
-<link rel="import" href="../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
-<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/iron-form/iron-form.html">
-<link rel="import" href="shared-styles.html">
-
-<dom-module id="my-view7">
 <html>
   <head>
     <meta charset="utf-8">
@@ -21,22 +11,16 @@
         width: 100%;
       }
     </style>
-   <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
     <script src="https://js.arcgis.com/4.6/"></script>
+    
     <script>
-
-				class MyView7 extends Polymer.Element {
-        		static get is() { return 'my-view7'; }
-        }
-
-        window.customElements.define(MyView7.is, MyView7);
-
-        require([
-        "esri/WebMap",
-        "esri/views/MapView",
-	    "esri/widgets/Search",
-	    "esri/layers/FeatureLayer",
-        "dojo/domReady!"
+      require([
+          "esri/WebMap",
+          "esri/views/MapView",
+	  "esri/widgets/Search",
+	  "esri/layers/FeatureLayer",
+          "dojo/domReady!"
         ], function(WebMap, MapView,Search,FeatureLayer) {
 
         var map = new WebMap({
@@ -52,6 +36,7 @@
 	  url : "http://services1.arcgis.com/qr14biwnHA6Vis6l/arcgis/rest/			services/Sports_Fields_2/FeatureServer/0",
 	});
        
+			
 	var view = new MapView({
           container: "viewDiv",
           map: map,
@@ -110,12 +95,9 @@
         	showPopup("No address found for this location.",evt.mapPoint);
       	    });
 	});
-}); 
-</script>
-</head>
-<body>
+}); </script>
+  </head>
+  <body>
     <div id="viewDiv"></div>
-</body>
+  </body>
 </html>
-
-</dom-module>
