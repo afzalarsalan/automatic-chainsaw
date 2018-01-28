@@ -36,10 +36,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <h1>Login</h1>
       <iron-form id="form1">
         <form action="http://127.0.0.1:5000/" method="post">
-          <paper-input always-float-label label="Name:" name="name"></paper-input>
-          <paper-input always-float-label label="Phone Number:" name="number"></paper-input>
+          <paper-input always-float-label label="Name:" name="name" value="{{username}}"></paper-input>
+          <paper-input always-float-label label="Phone Number:" name="number" value="{{phone}}"></paper-input>
+          <paper-input always-float-label label="Password:" name="password"></paper-input> <!-- pls hide my password kkkkkkkkkk? <3 -->
           <!--<paper-button class="Yes"><a name="view1" href="/view1">Login</a></paper-button>-->
-          <paper-button on-click="submitForm">I'm trash</paper-button>
+          <paper-button on-click="submitForm">Submit</paper-button>
         </form>
       </iron-form>
     </div>
@@ -48,6 +49,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     class MyView0 extends Polymer.Element {
       static get is() { return 'my-view0'; }
+
+      static get properties() {
+        return {
+          username: {
+            type: String,
+            notify: true
+          },
+          phone: {
+            type: Number,
+            notify: true
+          }
+        }
+      }
 
       submitForm() {
         this.$.form1.submit();
