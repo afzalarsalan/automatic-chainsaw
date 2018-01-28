@@ -25,12 +25,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           text-decoration: none;
           color: inherit;
       }
+      #dialog{
+        padding: 24px;
+      }
     </style>
 
     <div class="card">
       <div class="circle">3</div>
       <h1>End Game</h1>
-      <paper-button class="Win">Won</paper-button>
+      <paper-dialog id = "dialog">
+        <paper-dialog-scrollable>
+          <h3>You've won! Continue to play.</h3>
+        </paper-dialog-scrollable>
+        <div class="buttons">
+          <paper-button dialog-confirm autofocus>OK</paper-button>
+        </div>
+      </paper-dialog>
+      <paper-button raised on-click="openDialog" class="Win">Won</paper-button>
       <paper-button class="Lose"><a name="view5" href="/view5">Lost</a></paper-button>
     </div>
   </template>
@@ -38,6 +49,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     class MyView4 extends Polymer.Element {
       static get is() { return 'my-view4'; }
+      openDialog(){
+        this.$.dialog.open();
+      }
     }
 
     window.customElements.define(MyView4.is, MyView4);
