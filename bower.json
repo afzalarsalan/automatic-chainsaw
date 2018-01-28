@@ -23,7 +23,8 @@
     "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "d2l-button": "BrightspaceUI/button#^4.0.2",
-    "iron-form": "PolymerElements/iron-form#^2.1.2"
+    "iron-form": "PolymerElements/iron-form#^2.1.2",
+    "paper-dialog": "PolymerElements/paper-dialog#^2.0.1"
   },
   "resolutions": {
     "polymer": "^2.0.0"

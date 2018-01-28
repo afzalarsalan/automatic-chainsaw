@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view5">
@@ -20,19 +21,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+      #dialog {
+        padding: 24px;
+      }
     </style>
 
     <div class="card">
       <div class="circle">3</div>
       <h1>Play Again?</h1>
-      <paper-button class="No">Yes</paper-button> <!-- pop up that you've registered again -->
-      <paper-button class="Yes"><a name="view1" href="/view1">No</a></paper-button> <!-- go back to main screen -->
+      <paper-dialog id = "dialog">
+          <paper-dialog-scrollable>
+            <h4>You've Registered in line again!</h4>
+          </paper-dialog-scrollable>
+          <div class="buttons">
+            <paper-button dialog-confirm autofocus>OK</paper-button>
+          </div>
+        </paper-dialog>
+      <paper-button raised on-click="openDialog" class="Yes">Yes</paper-button> <!-- pop up that you've registered again -->
+      <paper-button class="No"><a name="view1" href="/view1">No</a></paper-button> <!-- go back to main screen -->
     </div>
   </template>
 
   <script>
     class MyView5 extends Polymer.Element {
       static get is() { return 'my-view5'; }
+
+      openDialog(){
+        this.$.dialog.open();
+      }
     }
 
     window.customElements.define(MyView5.is, MyView5);
